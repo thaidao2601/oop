@@ -8,7 +8,7 @@ public class AppearancesTest {
 	// utility -- converts a string to a list with one
 	// elem for each char.
 	private List<String> stringToList(String s) {
-		List<String> list = new ArrayList<String>();
+		List<String> list = new ArrayList<>();
 		for (int i=0; i<s.length(); i++) {
 			list.add(String.valueOf(s.charAt(i)));
 			// note: String.valueOf() converts lots of things to string form

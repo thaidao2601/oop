@@ -4,7 +4,10 @@
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertEquals;
+
 
 public class StringCodeTest {
 
@@ -84,5 +87,34 @@ public class StringCodeTest {
 	}
 
 	// Need test cases for stringIntersect
-	
+    @Test
+    public void testStringIntersect_BasicCases() {
+        assertTrue(StringCode.stringIntersect("abcdef", "zcdemf", 3)); // "cde"
+        assertFalse(StringCode.stringIntersect("abcdef", "ghijkl", 2)); // không có chung
+    }
+
+    @Test
+    public void testStringIntersect_OverlapAtBeginning() {
+        assertTrue(StringCode.stringIntersect("hello", "heyy", 2)); // "he"
+        assertFalse(StringCode.stringIntersect("hello", "heyy", 3)); // không có "hel" trong heyy
+    }
+
+    @Test
+    public void testStringIntersect_OverlapAtEnd() {
+        assertTrue(StringCode.stringIntersect("abcdxyz", "wxyz", 3)); // "xyz"
+        assertFalse(StringCode.stringIntersect("abcdxyz", "wxyz", 4)); // không có "dxyz" trong wxyz
+    }
+
+    @Test
+    public void testStringIntersect_SameStrings() {
+        assertTrue(StringCode.stringIntersect("banana", "banana", 6)); // nguyên chuỗi
+        assertTrue(StringCode.stringIntersect("banana", "banana", 1)); // bất kỳ ký tự nào
+    }
+
+    @Test
+    public void testStringIntersect_SpecialCases() {
+        assertFalse("len lớn hơn độ dài chuỗi", StringCode.stringIntersect("abc", "abc", 5));
+        assertFalse("một chuỗi rỗng", StringCode.stringIntersect("", "abc", 1));
+        assertFalse("cả 2 chuỗi rỗng", StringCode.stringIntersect("", "", 1));
+    }
 }

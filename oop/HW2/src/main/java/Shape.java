@@ -9,5 +9,15 @@ import java.util.*;
 */
 
 public class Shape {
+    private List<Point> points;
+    public Shape(String data) {
+        points = new ArrayList<>();
+        String[] tokens = data.trim().split("\\s+");
+        for (int i = 0; i < tokens.length; i += 2) {
+            double x = Double.parseDouble(tokens[i]);
+            double y = Double.parseDouble(tokens[i+1]);
+            points.add(new Point(x, y));
+        }
+    }
 }
 
